@@ -1,9 +1,10 @@
 function a_calc = a_cal()
     cd dataset;
-    cd o;
+    cd u;
     a_val=zeros(50,3);
     detector = vision.CascadeObjectDetector('mouth');
-    detector.MergeThreshold=150;
+    detector.MergeThreshold=50;
+    bbox_detected = 0;
     for i =1:50
             img_name=strcat(num2str(i),'.jpg');
             img = imread(img_name);
@@ -14,7 +15,7 @@ function a_calc = a_cal()
             temp_img = histeq(temp_img);
             temp_img = adapthisteq(temp_img);
             bbox=step(detector,temp_img);
-            x=size(bbox)
+            x=size(bbox);
             if x(1)==1;
                 area=bbox(3)*bbox(4);
                 width=bbox(3);
@@ -22,7 +23,27 @@ function a_calc = a_cal()
                 a_val(i,1)=area;
                 a_val(i,2)=width;
                 a_val(i,3)=height;
+                bbox_detected = 1;
             end
+    end
+    if bbox_detected ==0;
+        detector = vision.CascadeObjectDetector('o_trained_model.xml');
+        for i=1:50;
+            img_name=strcat(num2str(i),'.jpg');
+            img = imread(img_name);
+            img = imresize(img,0.2);
+            bbox=step(detector,img);
+            x=size(bbox);
+            if x(1)==1;
+                area=bbox(3)*bbox(4);
+                width=bbox(3);
+                height=bbox(4);
+                a_val(i,1)=area;
+                a_val(i,2)=width;
+                a_val(i,3)=height;
+                bbox_detected = 1;
+            end
+        end 
     end
     result_mean = mean(a_val);
     result_std=std(a_val);
