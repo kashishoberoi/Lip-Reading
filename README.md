@@ -19,20 +19,20 @@ This project aims at tracking the lip region based on colour and shape informati
 ### This image represents the lip shape for letter: U
 <img src="images/img5.PNG"><br />
 # IMAGE PREPROCESSING
-This is a working implementation of bounding box which is done by applying various filters to the suitable image and applying Image enhancement using histogram equalization.
+This is a working implementation of bounding box which is done by applying various filters to the suitable image and applying Image enhancement using histogram equalization.<br />
 <img src="images/img2.PNG"><br />
 <img src="images/proc1.PNG"><br />
-This is the sample image we have taken for the character ‘A’ focusing mainly on the mouth region and accordingly plotted a graph.
+This is the sample image we have taken for the character ‘A’ focusing mainly on the mouth region and accordingly plotted a graph.<br />
 <img src="images/proc2.PNG"><br />
 <img src="images/proc3.PNG"><br />
-Conversion of the sample image(rgb) to gray scale so as to perform all the suitable conversion as required by our algorithm and hence plotting its intensity graph.
+Conversion of the sample image(rgb) to gray scale so as to perform all the suitable conversion as required by our algorithm and hence plotting its intensity graph.<br />
 <img src="images/proc4.PNG"><br />
 <img src="images/proc5.PNG"><br />
-These are the equalizations we have performed on the sample grayscale image that we have rejected because the large variations in the values of the graph(pixel vs intensity) makes the detection difficult and hence makes the result hard to determine..
+These are the equalizations we have performed on the sample grayscale image that we have rejected because the large variations in the values of the graph(pixel vs intensity) makes the detection difficult and hence makes the result hard to determine. <br />
 <img src="images/proc6.PNG"><br />
-The Contrast enhancement technique proves to be the most suitable for our project as you can see the histogram is modified to have the counts of all pixels close to each other (uniform distribution). 
+The Contrast enhancement technique proves to be the most suitable for our project as you can see the histogram is modified to have the counts of all pixels close to each other (uniform distribution). <br />
 <img src="images/proc7.PNG"><br />
-Notice how we can observe that the contrast of the image is improved visually(notice how the features of the face "stands out" more in the histogram equalized image). Hence, we achieved the suitable contrast scheme for further processing.
+Notice how we can observe that the contrast of the image is improved visually(notice how the features of the face "stands out" more in the histogram equalized image). Hence, we achieved the suitable contrast scheme for further processing. <br />
 # WORK DONE
 To start with, a database of images of various syllables (lip region extraction) was first created by extracting frames from a captured video. The video is captured so as to focus on the lip movement information. The video is taken under certain standardized conditions such as uniform illumination, steady face alignment. The images obtained were further used to train a lip detecting classifier by supplying positive and negative images. <br /><br />
 Following this, a number of equalization techniques (imhist, imadjust, adapthisteq) were implemented out of which the best result was chosen to proceed with. Once we accomplished image equalization, the lip region was extracted using the aforementioned trained classifier. This resulted in all the input frames being enclosed by a bounding box surrounding the lip region. <br /><br />
